@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../utils/world_time.dart';
-
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 class Loading extends StatefulWidget {
   const Loading({Key? key}) : super(key: key);
 
@@ -17,7 +17,8 @@ class _LoadingState extends State<Loading> {
     Navigator.pushReplacementNamed(context, '/home', arguments: {
       'location': instance.location,
       'flag': instance.flag,
-      'time': instance.time
+      'time': instance.time,
+      'isDayTime': instance.isDayTime
     });
   }
 
@@ -31,16 +32,13 @@ class _LoadingState extends State<Loading> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body:
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(60),
-            child: Text(
-              'Loading',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ),
-        ]),
+        backgroundColor: Colors.blue[900],
+        body: Center(
+          child: SpinKitCubeGrid(
+  color: Colors.white,
+  size: 50.0,
+),
+        ),
       ),
     );
   }
